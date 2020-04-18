@@ -45,7 +45,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\BackgroundLoop.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+     <Compile Include="Assets\Scripts\HungerBar.cs" />
+     <Compile Include="Assets\Scripts\Milk.cs" />
+     <Compile Include="Assets\Scripts\Mouth.cs" />
+     <Compile Include="Assets\Scripts\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/nicol/Documents/GitHub/GJLudumDare/DancingDoug/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

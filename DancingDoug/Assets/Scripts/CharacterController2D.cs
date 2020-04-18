@@ -11,6 +11,7 @@ public class CharacterController2D : MonoBehaviour // thank you Brackeys :)
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
+	public int maxJumps;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -18,6 +19,7 @@ public class CharacterController2D : MonoBehaviour // thank you Brackeys :)
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	int jumpsLeft;
 
 	[Header("Events")]
 	[Space]
@@ -54,8 +56,11 @@ public class CharacterController2D : MonoBehaviour // thank you Brackeys :)
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (!wasGrounded)
+				if (!wasGrounded) {
+					Debug.Log("Grounded");
 					OnLandEvent.Invoke();
+					jumpsLeft = maxJumps;
+				}
 			}
 		}
 	}
@@ -124,12 +129,12 @@ public class CharacterController2D : MonoBehaviour // thank you Brackeys :)
 			}
 		}
 		// If the player should jump...
-		if (m_Grounded && jump)
+		if (jump && jumpsLeft > 0)
 		{
-			Debug.Log("jumping");
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+			jumpsLeft--;
 		}
 	}
 

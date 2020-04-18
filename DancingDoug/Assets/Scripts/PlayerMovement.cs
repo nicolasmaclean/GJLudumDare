@@ -13,13 +13,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        jump = Input.GetButtonDown("Jump");
-        Debug.Log(jump);
+        jump = Input.GetKeyDown(KeyCode.Space);
     }
 
     void FixedUpdate()
     {
         characterController.Move(horizontalInput * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+
+    public void changeMaxJumps(int delta)
+    {
+        characterController.maxJumps += delta;
     }
 }
