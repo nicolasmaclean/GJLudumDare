@@ -7,7 +7,7 @@ public class PlayerInventory : MonoBehaviour
 {
     PlayerMovement playerMovement;
     public Mouth mouth;
-    public Text milkText;
+    public GameObject milkText;
     public int milkCount = 0;
 
     void Start()
@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
     void Update() {
         if(Input.GetButtonDown("Feed") && mouth.canFeed == true) {
             if(feedMilk())
-                mouth.drinkMilk(30);
+                mouth.drinkMilk(100);
         }
         if(Input.GetButtonDown("Consume")) {
             consumeMilk();
@@ -35,9 +35,9 @@ public class PlayerInventory : MonoBehaviour
     public bool consumeMilk()
     {
         if(milkCount > 0) {
-            playerMovement.changeMaxJumps(1);
             milkCount--;
             updateMilkText();
+            transform.parent.GetComponent<PlayerManager>().levelUp(1);
             return true;
         }
         return false;
@@ -55,6 +55,6 @@ public class PlayerInventory : MonoBehaviour
 
     void updateMilkText()
     {
-        milkText.text = "X " + milkCount;
+        milkText.GetComponent<Text>().text = "X " + milkCount;
     }
 }

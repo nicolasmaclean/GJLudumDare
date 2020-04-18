@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class HungerBar : MonoBehaviour
 {
-    public RectTransform fillTarget;
     public Mouth mouth;
-    public float width;
 
     float currentValue;
-    float minValue = 0;
     float maxValue;
 
     void Awake()

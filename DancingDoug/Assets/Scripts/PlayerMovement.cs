@@ -14,10 +14,6 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal") * moveSpeed;
         jump = Input.GetKeyDown(KeyCode.Space);
-    }
-
-    void FixedUpdate()
-    {
         characterController.Move(horizontalInput * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
