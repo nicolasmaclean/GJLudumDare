@@ -6,23 +6,19 @@ using UnityEngine.UI;
 public class HungerBar : MonoBehaviour
 {
     public Mouth mouth;
+    public Text text;
 
-    float currentValue;
-    float maxValue;
+    Image image;
 
     void Awake()
     {
-        maxValue = mouth.hungerThreshold;    
+        image = GetComponent<Image>();
     }
 
-    void Update() {
-        currentValue = mouth.hunger;
-        // updateGFX();
-        GetComponent<Text>().text = "" + (int)currentValue;
-    }
-
-    void updateGFX()
+    void Update()
     {
-        // fillTarget.right = maxValue-currentValue*(width/maxValue);
+        image.fillAmount = mouth.hunger / mouth.hungerThreshold;
+        if(text != null)
+            text.text = ""+((int)mouth.hunger);
     }
 }

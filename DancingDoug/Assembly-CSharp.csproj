@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\CharacterController2D.cs" />
      <Compile Include="Assets\Scripts\HungerBar.cs" />
+     <Compile Include="Assets\Scripts\MainMenuUI.cs" />
      <Compile Include="Assets\Scripts\Milk.cs" />
      <Compile Include="Assets\Scripts\Mouth.cs" />
      <Compile Include="Assets\Scripts\PlayerInventory.cs" />
