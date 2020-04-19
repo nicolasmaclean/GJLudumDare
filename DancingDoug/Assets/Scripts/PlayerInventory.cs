@@ -34,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool consumeMilk()
     {
-        if(milkCount > 0) {
+        if(milkCount > 0 && transform.parent.GetComponent<PlayerManager>().canLevelUp()) {
             milkCount--;
             updateMilkText();
             transform.parent.GetComponent<PlayerManager>().levelUp(1);

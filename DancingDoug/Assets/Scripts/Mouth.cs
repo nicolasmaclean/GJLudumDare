@@ -7,7 +7,7 @@ public class Mouth : MonoBehaviour
     public float hunger = 0;
     public float digestionSpeed = 5f;
     public float hungerThreshold = 100f;
-    public bool canFeed = false;
+    public bool canFeed;
 
     void Update() {
         hunger += digestionSpeed * Time.deltaTime;
@@ -17,17 +17,21 @@ public class Mouth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) 
     {
+        if(other.isTrigger) return;
         canFeed = true;
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.isTrigger) return;
         canFeed = false;    
     }
 
     public void drinkMilk(float val)
     {
         hunger -= val;
-        hunger = hunger < 0 ? 0 : hunger;
+        if(hunger < 0)
+            hunger = 0;
     }
 
     public void starvedToDeath()

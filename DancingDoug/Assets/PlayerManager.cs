@@ -39,4 +39,9 @@ public class PlayerManager : MonoBehaviour
 
         currentPlayer = newPlayer.transform;
     }
+
+    public bool canLevelUp()
+    {
+        return stages.GetLength(0)-1 > currentStage;
+    }
 }
